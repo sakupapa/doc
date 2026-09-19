@@ -3,7 +3,7 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main  # master ブランチの場合は master に変更
+      - main 
 
 # GitHub Pages への書き込み権限を設定
 permissions:
