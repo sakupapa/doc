@@ -1,0 +1,51 @@
+site_name: MyAgent Documentation
+site_description: Cisco MyAgent User & Developer Guide
+site_author: Osamu Takama
+# GitHub Pages の URL（社内 GitHub Enterprise または public GitHub に合わせて変更）
+site_url: https://sakupapa.github.io/doc/
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    # ライトモード
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: ダークモードに切り替え
+    # ダークモード
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: ライトモードに切り替え
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+
+nav:
+  - ホーム: index.md
+  - はじめに: getting-started.md
