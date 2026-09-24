@@ -49,4 +49,6 @@ markdown_extensions:
 nav:
   - ホーム: index.md
   - 使い方:
-    - はじめに: getting-started.md
+    - 導入編: getting-started.md
+    - 詳細編: advanced.md
+
