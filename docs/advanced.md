@@ -1,24 +1,42 @@
-#  Advanced
+# 詳細編（Advanced Guide）
 
-Advanced usage
+このドキュメントでは、環境変数の設定、本番環境向けのビルド、およびトラブルシューティングについて解説します。
 
-## はじめに
+## 環境変数の設定（.env）
 
-- **カレンダー連携**: 今日の会議や空き時間の即時確認
-- **メール要約**: 重要メール・未読メールの自動抽出
-- **Webex自動化**: スペースの会話要約やフォローアップ通知
+プロジェクトのルートディレクトリに `.env` ファイルを作成し、必要な環境変数を定義してください。
 
-## 次に
+| 変数名 | 説明 | デフォルト値 |
+| :--- | :--- | :--- |
+| `API_BASE_URL` | バックエンドAPIの基底URL | `http://localhost:8080/api` |
+| `TIMEOUT_MS` | APIリクエストのタイムアウト時間（ミリ秒） | `5000` |
+| `ENABLE_LOGS` | 詳細ログの出力フラグ (`true` / `false`) | `false` |
 
-=== "Webex 経由"
-    ```text
-    @MyAgent 今日のスケジュールを教えて
-    ```
+```env
+# .env の記述例
+API_BASE_URL=https://example.com
+TIMEOUT_MS=3000
+ENABLE_LOGS=true
+```
 
-=== "REST API 経由"
-    ```bash
-    curl -X POST https://api.example.cisco.com/v1/chat \
-      -H "Authorization: Bearer $TOKEN" \
-      -d '{"prompt": "今日の予定"}'
-    ```
+## 本番環境向けのビルド
 
+本番環境にデプロイするための最適化されたファイルを生成するには、以下のコマンドを実行します。
+
+```bash
+npm run build
+```
+
+コマンドが成功すると、ルートディレクトリに `dist/` フォルダが生成されます。このフォルダ内の静的ファイルをWebサーバーに配置してください。
+
+## トラスブルシューティング
+
+### 依存関係の競合エラーが発生する場合
+
+`npm install` 時にエラーが出る場合は、一度キャッシュをクリアして再試行してください。
+
+```bash
+# キャッシュのクリアと再インストール
+rm -rf node_modules package-lock.json
+npm install
+```
